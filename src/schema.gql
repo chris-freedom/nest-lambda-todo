@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Todo {
+  _id: String!
+  label: String!
+  description: String!
+  status: Status!
+}
+
+enum Status {
+  ALL
+  ACTIVE
+  COMPLETED
+}
+
+type Query {
+  todo(_id: String!): Todo!
+  todos(offset: Int, first: Int): [Todo!]!
+}
+
+type Mutation {
+  editTodo(payload: EditTodoCommand!, _id: String!): Todo!
+  addTodo(payload: AddTodoCommand!): Todo!
+  removeTodo(_id: String!): Todo!
+  removeAll: Boolean!
+}
+
+input EditTodoCommand {
+  label: String
+  description: String
+  status: Status
+}
+
+input AddTodoCommand {
+  label: String!
+  description: String!
+  status: Status!
+}
